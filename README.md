@@ -1,32 +1,4 @@
-# Assignment 4: Minesweeper
-
-## Learning Goals
-File I/O, 2D-Arrays, Bit Operations
-
-## Specification
-Some general specifications must be followed for every assignment in this course. A list of these specifications can be
-found here: [Assessment of Assignments - Deductions](https://www.notion.so/coding-tugraz/Assessment-of-Assignments-How-do-you-get-your-points-d7cca6cc89a344e38ad74dd3ccb73cb3?pvs=4#e3203e50b1fc4ba787bdbf5fb46262ae).
-Please follow these specifications to avoid point deductions. 
-
-Furthermore, there is no maximum input length. *Theoretically*, the program should be capable of handling an **input of infinite length**.
-
-## Submission
-* File: a4.c
-* **Deadline:** 14.06.2024, 23:59 CET
-
-## Grading
-
-| Category	    | Points | 
-|---------------|--------|
-| Functionality | 23.8   |
-| Code Quality  | 10.2   |
-|               | 34     |
-
-**Attention:** In order to pass the course, you must pass at least half of the public test cases! (Among other conditions)
-
-More detailed information can be found in the [grading scheme](https://coding-tugraz.notion.site/Assessment-of-Assignments-How-do-you-get-your-points-d7cca6cc89a344e38ad74dd3ccb73cb3). 
-
----
+# Assignment : Minesweeper
 
 ## Description
 The goal of this assignment is to implement the well-known 2D-game *Minesweeper*.
@@ -614,4 +586,4 @@ If an error is encountered within the game, while handling a command, the comman
 the corresponding error message has been output and the game should continue as if the failing command has never been 
 entered.
 
-*Note: For the sake of simplicity, we will not test cases where multiple errors occur at once.*
+
