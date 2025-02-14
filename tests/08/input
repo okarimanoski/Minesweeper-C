@@ -1,0 +1,5 @@
+start 2 2
+open 0 8
+open 8 4
+save data/minecraft_1
+quit

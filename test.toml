@@ -1,0 +1,309 @@
+[project_definition]
+binary_path = "./a4"
+makefile_path = "."
+make_targets = ["all"]
+project_name = "a4"
+global_timeout = 20
+
+[[testcases]]
+name = "Start and quit"
+description = "Only starts and quits the game."
+type = "OrdIO"
+io_file = "tests/01/io"
+io_prompt = "^\\s*>\\s*$"
+exp_exit_code = 0
+argv = []
+
+[[testcases]]
+name = "GG, gtg"
+description = "Plays one game with default parameters (only opening, not flagging), ending the game with quit."
+type = "OrdIO"
+io_file = "tests/02/io"
+io_prompt = "^\\s*>\\s*$"
+exp_exit_code = 0
+argv = []
+
+[[testcases]]
+name = "Allow Cheats: ON"
+description = "Starts game, dumps playing field and quits"
+type = "OrdIO"
+io_file = "tests/03/io"
+io_prompt = "^\\s*>\\s*$"
+exp_exit_code = 0
+argv = []
+
+[[testcases]]
+name = "smol"
+description = "Plays one game with changed field size (only opening, not flagging), ending the game with quit."
+type = "OrdIO"
+io_file = "tests/04/io"
+io_prompt = "^\\s*>\\s*$"
+exp_exit_code = 0
+argv = ["--size", "4", "4"]
+
+[[testcases]]
+name = "I am surrounded, send help!"
+description = "Plays one game with changed mine count (no opening, no flagging), ending the game with quit."
+type = "OrdIO"
+io_file = "tests/05/io"
+io_prompt = "^\\s*>\\s*$"
+exp_exit_code = 0
+argv = ["--mines", "79"]
+
+[[testcases]]
+name = "Praying to RNGsus"
+description = "Plays one game with changed map seed (opening and dumping, no flagging), ending the game with quit."
+type = "OrdIO"
+io_file = "tests/06/io"
+io_prompt = "^\\s*>\\s*$"
+exp_exit_code = 0
+argv = ["--seed", "5"]
+
+[[testcases]]
+name = "Starting custom game..."
+description = "Plays one game with changed map seed, mine count and field size (opening and dumping, no flagging), ending the game with quit."
+type = "OrdIO"
+io_file = "tests/07/io"
+io_prompt = "^\\s*>\\s*$"
+exp_exit_code = 0
+argv = ["--size","10", "12", "--mines", "45","--seed", "7"]
+
+[[testcases]]
+name = "Quicksaving..."
+description = "Playing game with default parameters (opening, no flagging), saving game and quitting."
+type = "OrdIO"
+io_file = "tests/08/io"
+io_prompt = "^\\s*>\\s*$"
+exp_exit_code = 0
+argv = []
+add_diff_mode = "binary"
+add_out_file = "data/minecraft_1"
+add_exp_file = "tests/08/savegame"
+
+[[testcases]]
+name = "That's one small step for man, one giant leap for mankind."
+description = "Playing game with default parameters (opening and flagging), quitting."
+type = "OrdIO"
+io_file = "tests/09/io"
+io_prompt = "^\\s*>\\s*$"
+exp_exit_code = 0
+argv = []
+
+[[testcases]]
+name = "Task failed successfully!"
+description = "Inducing Error 2 (Invalid number of parameters for command line argument)."
+type = "OrdIO"
+io_file = "tests/10/io"
+io_prompt = "^\\s*>\\s*$"
+exp_exit_code = 2
+argv = ["--size", "9"]
+
+[[testcases]]
+name = "Get rekt"
+description = "Playing game with custom parameters until player opens a mine (loss)."
+type = "OrdIO"
+io_file = "tests/11/io"
+io_prompt = "^\\s*>\\s*$"
+exp_exit_code = 0
+argv = ["--size", "15", "15", "--seed", "15"]
+
+[[testcases]]
+name = "gg ez"
+description = "Playing game with custom parameters until player opens all fields without mines (win)."
+type = "OrdIO"
+io_file = "tests/12/io"
+io_prompt = "^\\s*>\\s*$"
+exp_exit_code = 0
+argv = ["--size", "15", "15", "--seed", "15"]
+
+[[testcases]]
+name = "custom tc 1"
+description = "are you a sore looser?"
+type = "OrdIO"
+io_file = "tests/custom_01/io"
+io_prompt = "^\\s*>\\s*$"
+exp_exit_code = 0
+argv = ["--size", "6", "9", "--mines", "42", "--seed", "1"]
+
+[[testcases]]
+name = "custom tc 2"
+description = "easy win lol"
+type = "OrdIO"
+io_file = "tests/custom_02/io"
+io_prompt = "^\\s*>\\s*$"
+exp_exit_code = 0
+argv = []
+
+[[testcases]]
+name = "custom tc 3"
+description = "I want to be a param!!!"
+type = "OrdIO"
+io_file = "tests/custom_03/io"
+io_prompt = "^\\s*>\\s*$"
+exp_exit_code = 3
+argv = ["I", "Wanna", "Be", "Free"]
+
+[[testcases]]
+name = "custom tc 4"
+description = "nah we don't need fields"
+type = "OrdIO"
+io_file = "tests/custom_04/io"
+io_prompt = "^\\s*>\\s*$"
+exp_exit_code = 5
+argv = ["--size", "0", "0"]
+
+[[testcases]]
+name = "custom tc 5"
+description = "who said we have to have integers?"
+type = "OrdIO"
+io_file = "tests/custom_05/io"
+io_prompt = "^\\s*>\\s*$"
+exp_exit_code = 4
+argv = ["--size", "a", "b"]
+
+[[testcases]]
+name = "custom tc 6"
+description = "let me be negative"
+type = "OrdIO"
+io_file = "tests/custom_06/io"
+io_prompt = "^\\s*>\\s*$"
+exp_exit_code = 5
+argv = ["--size", "-1", "-1"]
+
+[[testcases]]
+name = "custom tc 7"
+description = "mine count has to be < height * width  (hint: check mine count after parameters have been set to default)"
+type = "OrdIO"
+io_file = "tests/custom_07/io"
+io_prompt = "^\\s*>\\s*$"
+exp_exit_code = 5
+argv = ["--size", "1", "1"]
+
+[[testcases]]
+name = "custom tc 8"
+description = "2^64 - 1 number of fields"
+type = "OrdIO"
+io_file = "tests/custom_08/io"
+io_prompt = "^\\s*>\\s*$"
+exp_exit_code = 1
+argv = ["--size", "18446744073709551615", "1"]
+
+[[testcases]]
+name = "custom tc 9"
+description = "strncmp can be your enemy ;)"
+type = "OrdIO"
+io_file = "tests/custom_09/io"
+io_prompt = "^\\s*>\\s*$"
+exp_exit_code = 3
+argv = ["--sizelol", "1", "1"]
+
+[[testcases]]
+name = "custom tc 10"
+description = "I am the one and only param!!"
+type = "OrdIO"
+io_file = "tests/custom_10/io"
+io_prompt = "^\\s*>\\s*$"
+exp_exit_code = 2
+argv = ["--size", "1"]
+
+[[testcases]]
+name = "custom tc 11"
+description = "why so negative?"
+type = "OrdIO"
+io_file = "tests/custom_11/io"
+io_prompt = "^\\s*>\\s*$"
+exp_exit_code = 4
+argv = ["--size", "-", "-"]
+
+[[testcases]]
+name = "custom tc 12"
+description = "I WANT TO BE VALID!!!"
+type = "OrdIO"
+io_file = "tests/custom_12/io"
+io_prompt = "^\\s*>\\s*$"
+exp_exit_code = 3
+argv = ["-size", "4", "2"]
+
+[[testcases]]
+name = "custom tc 13"
+description = "RE-RE-RESTART!!!"
+type = "OrdIO"
+io_file = "tests/custom_13/io"
+io_prompt = "^\\s*>\\s*$"
+exp_exit_code = 0
+argv = []
+
+[[testcases]]
+name = "custom tc 14"
+description = "let's have some fun with saving & loading"
+type = "OrdIO"
+io_file = "tests/custom_14/io"
+io_prompt = "^\\s*>\\s*$"
+exp_exit_code = 0
+argv = []
+add_diff_mode = "binary"
+add_out_file = "data/custom_tc_14_1"
+add_exp_file = "tests/custom_14/custom_tc_14_1"
+
+[[testcases]]
+name = "custom tc 15"
+description = "all my homies hate strncmp"
+type = "OrdIO"
+io_file = "tests/custom_15/io"
+io_prompt = "^\\s*>\\s*$"
+exp_exit_code = 0
+argv = []
+
+[[testcases]]
+name = "custom tc 16"
+description = "flag mania"
+type = "OrdIO"
+io_file = "tests/custom_16/io"
+io_prompt = "^\\s*>\\s*$"
+exp_exit_code = 0
+argv = []
+
+[[testcases]]
+name = "custom tc 17"
+description = "HA! and you thought you had write permissions?"
+type = "OrdIO"
+io_file = "tests/custom_17/io"
+io_prompt = "^\\s*>\\s*$"
+exp_exit_code = 0
+argv = []
+
+[[testcases]]
+name = "custom tc 18"
+description = "puff! the magic number is gone!"
+type = "OrdIO"
+io_file = "tests/custom_18/io"
+io_prompt = "^\\s*>\\s*$"
+exp_exit_code = 0
+argv = []
+
+[[testcases]]
+name = "custom tc 19 - pseudorandom number generation check (31,6% = passed)"
+description = "embrace the randomness"
+type = "OrdIO"
+io_file = "tests/custom_19/io"
+io_prompt = "^\\s*>\\s*$"
+exp_exit_code = 0
+argv = []
+
+[[testcases]]
+name = "custom tc 20"
+description = "character + int as argv -> Credit: @martin_gamper"
+type = "OrdIO"
+io_file = "tests/custom_20/io"
+io_prompt = "^\\s*>\\s*$"
+exp_exit_code = 4
+argv = ["--size", "5a", "5b"]
+
+[[testcases]]
+name = "custom tc 21"
+description = "mine count must be < height * width -> Credit: @thepotentialdropout"
+type = "OrdIO"
+io_file = "tests/custom_21/io"
+io_prompt = "^\\s*>\\s*$"
+exp_exit_code = 5
+argv = ["--mines", "81"]

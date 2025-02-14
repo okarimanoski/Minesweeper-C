@@ -1,0 +1,6 @@
+start 9 9
+dump
+open 2 0
+open 2 11
+open 5 9
+quit
