@@ -1,5 +1,5 @@
 //---------------------------------------------------------------------------------------------------------------------
-//
+// 
 //
 //
 // The goal of this assignment is to implement the well-known 2D-game Minesweeper.
